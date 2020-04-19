@@ -1,0 +1,28 @@
+@import '../../../../../root-style.scss';
+
+.modal{
+    .header{
+        text-transform: capitalize;
+        background: $greeny-blue;
+        color: $white;
+    }
+    .button{
+        height: 30px;
+        font-size: 14px;
+        border-radius: 10px;
+        padding: 0 50px;
+        background: $greeny-blue;
+        color: $white;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .input{
+        label{
+            margin-left: 10px;
+        }
+    }
+    .number-campaign-input{
+        width: 60px;
+        padding: 2px 8px;
+    }
+}

@@ -1,0 +1,115 @@
+@import '../../root-style.scss';
+.survey-page {
+    background: $bg-gray;
+    height: 100%;
+    .survey-body{
+        width: 570px;
+        background: $white;
+        padding: 10px 55px;
+      
+    }
+    .error{
+      font-size: 12px;
+      color: $red;
+    }
+    .header{
+        background-color: #ffffff;
+        height:70px;
+    }
+    .header-logo{
+        margin-top: 1%;;
+        margin-left: 40%;
+        width: 200px;
+    }
+    .heading-bold{
+        font-size:26px;
+        position: relative;
+        padding-top: 10%;
+        font-weight: 500;
+      }
+    .heading-content{
+        margin-bottom: 40px;
+        color: $lightblack;
+    }
+    .header{
+      background-color: #ffffff;
+      height:70px;
+    }
+    .title {
+        color: $black2;
+        font-size: $font18;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.22;
+        letter-spacing: normal;
+      }
+
+      .question{
+          padding-top:15px;
+          padding-bottom: 15px;
+          color: #616161;
+
+      }
+
+      input[type="radio"] :after {
+        width: 24px;
+        height: 24px;
+        border: solid 2px #5fc8da !important;
+      }   
+      input[type="radio"] {
+        width: 24px;
+        height: 24px;
+        border: solid 2px #5fc8da !important;
+      }  
+      input[type="radio"] :checked {
+        border: solid 2px #5fc8da !important;
+        background: #5fc8da ;
+      }  
+
+      label{
+        padding-left: 9px;
+        padding-right: 9px;
+        color: #919191;
+
+      }
+
+      input[type="radio"]:checked {
+        background-color: #93e026;
+      }
+
+      .need-help{
+        font-size: 13px;
+        color: $skyblue;
+        text-decoration: underline;
+        padding-left: 210px;
+    }
+.button {
+    width: 364px;
+    height: 48px;
+    margin: 5px 0px;
+    border-radius: 10px;
+    border: solid 2px $white;
+    background: $white;
+    font-family: $roboto;
+    font-size: $font16;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: 0.32px;
+    margin-left: 60px;
+    
+  }
+    .submit-btn{
+        background: $skyblue;
+        color: $white;
+      }
+      .submit-disable{
+        background: $bg-gray;
+        color: $lightblack;
+      }
+
+      .logo-images{
+          margin-top: 5%;
+      }
+}

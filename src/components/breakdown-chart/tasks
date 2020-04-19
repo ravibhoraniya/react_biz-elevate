@@ -1,0 +1,18 @@
+
+
+Breakdown chart: Analysis of users for a specific campaign / adset.
+
+ - select the campaign / adset for which u wanna see the breakdown of audience.
+ - there will be a single api call for each parameter (lhs / column) which is going to fetch result pertaining to that parameter - category combination.
+ - show the datagrid.
+
+
+ api -> first task: create an api endpoint which is capacble to send the audience information.
+ second task -> create a json data strcuture which saves the information about parameter / keywords application for each of the audience-info catergories:
+    example:  Gender -> request parmaters
+                        response paramters to saves (response -> male ,  female sub-params)
+
+ third task write a collective wrapper over the api-calling function which will ensure the complete breakdown data is obtained in one go []
+
+
+   api/v1/campaigns/:campaignId/adsets/:adsetId/insights/audience-breakdown?from=""&to=""
