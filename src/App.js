@@ -19,7 +19,7 @@ import CampaignComponent from './components/campaigns';
 import AdsetsComponent from './components/campaigns/adsets';
 import AdsComponent from './components/campaigns/ads';
 import CampaignsListComponent from './components/campaigns/list/campaigns-list';
-import AdsetsListComponent from './components/campaigns/list/adsets-list';
+import AdsetsListComponent from './components/campaigns/list/knowledge-base';
 import BreakdownChartComponent from './components/breakdown-chart';
 import history from './history';
 
@@ -44,7 +44,7 @@ function App() {
           <Route path={'/adsets'} render={() => <AdsetsComponent />}></Route>
           <Route path={'/ads'} render={() => <AdsComponent />}></Route>
           <Route path={'/campaigns-list'} render={() => <CampaignsListComponent />}></Route>
-          <Route path={'/adsets-list'} render={() => <AdsetsListComponent />}></Route>
+          <Route path={'/knowledge-base'} render={() => <AdsetsListComponent />}></Route>
           <Route path={'/breakdown-chart'} render={() => <BreakdownChartComponent />}></Route>
           <Route path={'/'}></Route>
         </>
