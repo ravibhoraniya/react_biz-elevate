@@ -15,8 +15,8 @@ import {
   getCampaignsList,
   createCampaignCopies
 } from "../../../../actions/campaigns/create-campaign-action";
-import {createAdsetCopies} from '../../../../actions/campaigns/adsets-action';
-import {createAdCopies} from '../../../../actions/campaigns/ad-action';
+import { createAdsetCopies } from '../../../../actions/campaigns/adsets-action';
+import { createAdCopies } from '../../../../actions/campaigns/ad-action';
 import { adsetMapper, adsMapper } from "./methods";
 import Switch from "react-switch";
 import "./style.scss";
@@ -43,6 +43,7 @@ class CampaignsListComponent extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.signIn.data.userId);
     this.getListData();
   }
 
@@ -161,7 +162,7 @@ class CampaignsListComponent extends Component {
       userId: this.props.signIn.data.userId,
       numberOfCopies: value.numberOfCopies
     };
-    switch(this.state.selectedTab){
+    switch (this.state.selectedTab) {
       case 'campaigns':
         obj.campaignId = this.state.selectedListId;
         createCampaignCopies(obj).then(res => {

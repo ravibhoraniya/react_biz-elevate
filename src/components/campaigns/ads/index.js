@@ -10,7 +10,7 @@ import {
   uploadVideo,
   createAdCreatives
 } from "../../../actions/campaigns/ad-action";
-import {getFBPages} from '../../../actions/campaigns/adsets-action';
+import { getFBPages } from '../../../actions/campaigns/adsets-action';
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import { bindActionCreators } from "redux";
@@ -25,10 +25,10 @@ import { _ } from "underscore";
 import { ADS } from "../../../lib/constant";
 import RTimeline from "../../../reusable-component/timeline";
 import NavBarComponent from "../../navigation/nav-bar";
-import {getBase64} from '../../../lib/method';
+import { getBase64 } from '../../../lib/method';
 import RenderModal from './modal/modal';
 
-let callToActionArr = [{label: 'Link More', value: 'LINK_MORE'}];
+let callToActionArr = [{ label: 'Link More', value: 'LINK_MORE' }];
 
 let userData = {
   adAccountId: "act_189522688767499",
@@ -62,12 +62,12 @@ class AdsComponent extends Component {
       fbPage: null,
       imgSrc: null,
       show: false,
-      fbPixelArr: [1,2,3],
-      adsList: [{headline: '', description: '', webUrl: '', imageBase64: ''}],
+      fbPixelArr: [1, 2, 3],
+      adsList: [{ headline: '', description: '', webUrl: '', imageBase64: '' }],
       adCreativeInputFields: [
-        {value: '', name:'headline', error: '', label: 'Headline', placeholder: 'Write a short headline', infoIcon: true, toolTip: 'The headline will appear in most placements, but its position will vary by placement. Headlines over 40 characters may be cut off.'},
-        {value: '', name:'description', error: '', label: 'Description', placeholder: 'Include addtional details', infoIcon: true, toolTip: 'The description is additional text that appears in some placements. Its position on the ad varies by placement.'},
-        {value: '', name:'webUrl', error: '', label: 'Website URL', placeholder: 'https://www.example.com/page', infoIcon: false, toolTip: ''},
+        { value: '', name: 'headline', error: '', label: 'Headline', placeholder: 'Write a short headline', infoIcon: true, toolTip: 'The headline will appear in most placements, but its position will vary by placement. Headlines over 40 characters may be cut off.' },
+        { value: '', name: 'description', error: '', label: 'Description', placeholder: 'Include addtional details', infoIcon: true, toolTip: 'The description is additional text that appears in some placements. Its position on the ad varies by placement.' },
+        { value: '', name: 'webUrl', error: '', label: 'Website URL', placeholder: 'https://www.example.com/page', infoIcon: false, toolTip: '' },
       ],
       seeMore: null,
       headline: null,
@@ -78,7 +78,7 @@ class AdsComponent extends Component {
       errors: {
         adsName: null,
         fbPage: null,
-        instaAcc: null ,
+        instaAcc: null,
         callToAction: null,
         adsList: null,
         seeMore: null,
@@ -105,7 +105,7 @@ class AdsComponent extends Component {
   }
 
   handleAdsName = (e) => {
-      userData.data.name = e.target.value;
+    userData.data.name = e.target.value;
   }
 
   handleFbPageSelect = pageData => {
@@ -128,28 +128,28 @@ class AdsComponent extends Component {
   };
 
   handleSelectImg = () => {
-    if(this.state.adsType === 'carousel'){
-      if(this.state.radioState === 'image'){
+    if (this.state.adsType === 'carousel') {
+      if (this.state.radioState === 'image') {
         userData.adCreativeData.carousel[this.state.selectedAd]['image_hash'] = '6971b2c299b5cc1c5e84508957f1aa5b';
-      }else if(this.state.radioState === 'video') {
+      } else if (this.state.radioState === 'video') {
         userData.adCreativeData.carousel[this.state.selectedAd]['video'] = '6971b2c299b5cc1c5e84508957f1aa5b';
       }
-    }else {
+    } else {
       userData.adCreativeData['imageBase64'] = '6971b2c299b5cc1c5e84508957f1aa5b';
     }
   }
 
   hanldeOnlineFbMediaUpload = (data) => {
-    if(this.state.radioState === 'image'){
-      if(this.state.adsType === 'carousel'){
+    if (this.state.radioState === 'image') {
+      if (this.state.adsType === 'carousel') {
         userData.adCreativeData.carousel[this.state.selectedAd]['image_hash'] = data.hash;
-      }else {
+      } else {
         userData.adCreativeData['imageBase64'] = data.hash;
       }
-    }else{
-      if(this.state.adsType === 'carousel'){
+    } else {
+      if (this.state.adsType === 'carousel') {
         userData.adCreativeData.carousel[this.state.selectedAd]['video_id'] = data.id;
-      }else {
+      } else {
         userData.adCreativeData['imageBase64'] = data.id;
       }
     }
@@ -163,13 +163,13 @@ class AdsComponent extends Component {
     }
     let type = e.target.files[0].type;
     console.log(obj);
-    if(this.state.radioState === 'image' && type.includes('image')){
+    if (this.state.radioState === 'image' && type.includes('image')) {
       getBase64(e).then(res => {
         obj.imgBase64 = res;
         uploadImg(obj).then(res => {
-          if(this.state.adsType === 'carousel'){
+          if (this.state.adsType === 'carousel') {
             userData.adCreativeData.carousel[this.state.selectedAd]['image_hash'] = res.imgHash.hash;
-          }else {
+          } else {
             userData.adCreativeData['imageBase64'] = res.imgHash.hash;
           }
           this.setState({
@@ -177,8 +177,8 @@ class AdsComponent extends Component {
           })
         });
       });
-    }else if(this.state.radioState === 'video' && type.includes('video')){
-      
+    } else if (this.state.radioState === 'video' && type.includes('video')) {
+
       uploadVideo({
         userId: userData.userId,
         adAccountId: userData.adAccountId,
@@ -196,11 +196,11 @@ class AdsComponent extends Component {
   }
 
   handleInputs = (e) => {
-    if(this.state.adsType === 'carousel'){
-      const {adsList, selectedAd} = this.state;
+    if (this.state.adsType === 'carousel') {
+      const { adsList, selectedAd } = this.state;
       let temp = adsList;
       temp[selectedAd][e.target.name] = e.target.value;
-    }else {
+    } else {
       userData.adCreativeData[e.target.name] = e.target.value;
     }
   }
@@ -222,7 +222,7 @@ class AdsComponent extends Component {
   }
 
   handleCallToActionChange = (option) => {
-    this.setState({callToAction: option})
+    this.setState({ callToAction: option })
     userData.adCreativeData.callToAction = option.value;
   }
 
@@ -233,12 +233,12 @@ class AdsComponent extends Component {
   handleAdd = () => {
     let arr = this.state.adsList;
     let arrLength = arr.length;
-    if(arrLength === 10){
+    if (arrLength === 10) {
       let err = this.state.errors;
       err.adsList = 'You have reached your max limit';
-      this.setState({errors: err})
-    }else {
-      arr.push({headline: '', description: '', webUrl: '', imageBase64: ''});
+      this.setState({ errors: err })
+    } else {
+      arr.push({ headline: '', description: '', webUrl: '', imageBase64: '' });
       this.setState({
         adsList: arr
       });
@@ -246,7 +246,7 @@ class AdsComponent extends Component {
   }
 
   handleSelectedAd(e, fieldData, id) {
-    this.setState({selectedAd: id})
+    this.setState({ selectedAd: id })
     let adCreativeFields = this.state.adCreativeInputFields;
     let temp = ['headline', 'description', 'webUrl'];
     _.each(adCreativeFields, (data, idx) => {
@@ -266,9 +266,9 @@ class AdsComponent extends Component {
   }
 
   checkFields = (value) => {
-    if(Array.isArray(value)){
+    if (Array.isArray(value)) {
       return value.length > 0 ? null : 'Field required';
-    }else {
+    } else {
       return value !== null ? null : 'Field required';
     }
   }
@@ -314,21 +314,21 @@ class AdsComponent extends Component {
     userData.adCreativeData.carousel = this.state.adsList;
 
     let temp = [];
-      _.each(userData.adCreativeData.carousel, (data, id) => {
-        data.name = data.headline;
-        data.link = data.webUrl;
-        if(this.state.radioState === 'video'){
-          data.video_id = '518496128807133';
-        }
-        
-        temp.push(_.omit(data, "headline", 'imageBase64', 'webUrl'));
-      });
-      userData.adCreativeData.carousel = temp;
+    _.each(userData.adCreativeData.carousel, (data, id) => {
+      data.name = data.headline;
+      data.link = data.webUrl;
+      if (this.state.radioState === 'video') {
+        data.video_id = '518496128807133';
+      }
+
+      temp.push(_.omit(data, "headline", 'imageBase64', 'webUrl'));
+    });
+    userData.adCreativeData.carousel = temp;
 
     // console.log(userData.adCreativeData);
     this.props.createAdCreatives(adCreativeObj);
-    let result = _.every(_.values(err), function(v) {return !v;});
-    if(result){
+    let result = _.every(_.values(err), function (v) { return !v; });
+    if (result) {
     }
   }
 
@@ -504,21 +504,21 @@ class AdsComponent extends Component {
                             text="Select Image"
                             class="button select-img"
                             click={this.handleClose}
-                            // click={() => this.inputFileRef.current.click()}
+                          // click={() => this.inputFileRef.current.click()}
                           />
                           <RenderModal
-                            show={this.state.show} 
-                            openExplorer={() => this.inputFileRef.current.click()} 
-                            handleClose={this.handleClose} 
-                            userData={{userId: userData.userId, adAccountId: userData.adAccountId}}
+                            show={this.state.show}
+                            openExplorer={() => this.inputFileRef.current.click()}
+                            handleClose={this.handleClose}
+                            userData={{ userId: userData.userId, adAccountId: userData.adAccountId }}
                           />
-                          <input onChange={this.handleUpload} ref={this.inputFileRef} type="file" style={{display:"none"}}/>
+                          <input onChange={this.handleUpload} ref={this.inputFileRef} type="file" style={{ display: "none" }} />
                         </Col>
                         <Col lg={12}>
                           <p>IMAGE SPECIFICATIONS</p>
                           <p>
-                          - Recommended image size: 1080 × 1080 pixels.<br/>
-                          - Recommended image ratio: 1:1<br/>
+                            - Recommended image size: 1080 × 1080 pixels.<br />
+                          - Recommended image ratio: 1:1<br />
                           - To maximize ad delivery, use an image that contains little or no
                           overlaid text. Learn More
                           </p>
@@ -526,7 +526,7 @@ class AdsComponent extends Component {
                         <Col lg={12}>
                           For questions and more information, see the <a href='#abc'>Facebook Ad Guidelines.</a>
                         </Col>
-                        {_.map(adCreativeInputFields, (data, idx) => 
+                        {_.map(adCreativeInputFields, (data, idx) =>
                           <Col key={idx} lg={12}>
                             <RInput
                               id={data.name}
@@ -547,21 +547,21 @@ class AdsComponent extends Component {
                             <div><a href='#abc'>Select cards from previous ads</a></div>
                           </div>
                         </Col>
-                        {_.map(ADS.checkboxes , (data, idx) => 
+                        {_.map(ADS.checkboxes, (data, idx) =>
                           <Col key={idx} lg={12}>
-                            <RCheckbox 
+                            <RCheckbox
                               handleCheck={this.handleChecks}
                               label={data.label}
                             />
                           </Col>
                         )}
                         <Col lg={12}>
-                          <RLabel 
+                          <RLabel
                             label={ADS.primaryText.label}
                             infoIcon={true}
                             toolTip={ADS.primaryText.toolTip}
                           />
-                          <textarea name='primaryText' rows='5' placeholder={ADS.primaryText.placeholder} onChange={this.handlePrimaryTxt}></textarea><br/>
+                          <textarea name='primaryText' rows='5' placeholder={ADS.primaryText.placeholder} onChange={this.handlePrimaryTxt}></textarea><br />
                           <a href='#abc'>+Add another option</a>
                         </Col>
                         <Col lg={12}>
@@ -576,18 +576,18 @@ class AdsComponent extends Component {
                           />
                         </Col>
                         <Col lg={12}>
-                        <RLabel
-                          label="Call to action"
-                          infoIcon={true}
-                          toolTip="Select on the option"
-                          error={errors.callToAction}
-                        />
-                        <Select
-                          value={callToAction}
-                          onChange={this.handleCallToActionChange}
-                          options={callToActionArr}
-                          className="select-dropdown"
-                        />
+                          <RLabel
+                            label="Call to action"
+                            infoIcon={true}
+                            toolTip="Select on the option"
+                            error={errors.callToAction}
+                          />
+                          <Select
+                            value={callToAction}
+                            onChange={this.handleCallToActionChange}
+                            options={callToActionArr}
+                            className="select-dropdown"
+                          />
                         </Col>
                       </Row>
                     </Col>
@@ -612,7 +612,7 @@ class AdsComponent extends Component {
                         action={this.handlefbPixelMenu}
                       /> : null}
                     </Col>
-                    
+
                   </Row>
                 </div>
               </Tab>

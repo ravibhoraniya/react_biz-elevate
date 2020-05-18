@@ -1,0 +1,192 @@
+:root {
+    --white: #ffffff;
+    --pale-grey: #f0f0f7;
+    --seafoam-blue: #52bfcf;
+    --flat-blue: #3569a4;
+    --dusk: #5c507e;
+    --dusk-two: #43425d;
+    --greeny-blue: #41b3c4;
+    --warm-grey: #919191;
+    --pale-grey-three: #f5f6fa;
+    --white-two: #fafafa;
+    --cool-grey: #a3a6b4;
+    --gunmetal: #4d4f5c;
+    --light-grey-blue: #9ebed9;
+    --black: #333333;
+    --pale-grey-four: #eef1f5;
+    --cherry-red: #e80029;
+    --pinkish-grey: #cccccc;
+    --pale-grey-two: #f4f4f8;
+}
+
+.modal-lg{
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+}
+.modal-content{
+    overflow-y: auto;
+    max-height: 100vh;
+}
+.modal_body{
+    .m1{
+        .title{
+            background-color: var(--pale-grey-three);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        span { 
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.33;
+            letter-spacing: normal;
+            text-align: left;
+            color: var(--warm-grey);
+        }
+        strong{
+            color: var(--black);
+            margin-left: 5px;
+        }
+    }
+}
+
+.modal_header{
+    align-items: center;
+    border:none;
+    padding-top: 30px;
+
+    .action_btn{
+        text-align:right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .title h2{
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 0.67;
+        letter-spacing: normal;
+        text-align: left;
+        color: var(--gunmetal);
+    }
+    .action_btn i{
+        font-size: 16px;
+        margin-left: 5px;
+        margin-right: 5px;
+        color: var(--warm-grey);
+    }
+    .action_btn .fa-times-circle-o{
+        color: var(--black);
+        font-size: 30px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    .action_btn a{
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.42;
+        letter-spacing: normal; 
+        color: var(--warm-grey);
+    }
+} 
+
+.m2{
+    .title{
+        background-color: var(--pale-grey-three);
+        padding: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between; 
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: var(--warm-grey); 
+        
+        h3{
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: bold;
+            font-stretch: normal;
+            font-style: normal;
+            letter-spacing: normal;
+            text-align: left;
+            color: var(--gunmetal);
+            margin: 0;
+        }
+        strong{
+            margin-left: 15px;
+            color: var(--black);
+        }
+    }
+}
+
+.fb_count{
+    text-align: center;
+    margin-bottom: 20px;
+    
+    .box img{
+        max-width: 50px;
+        margin-bottom: 10px;
+    }
+    .box i{
+        font-size: 40px;
+        margin-bottom: 10px;
+        color: var(--warm-grey);
+    }
+    .box h4{ 
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: var(--black); 
+
+        strong{
+            display: block;
+            color: var(--black);
+        }
+    }
+}
+
+.fb_text_left{
+    text-align: left;
+
+    .box h4{
+        text-align: left;
+        padding: 0 10px;
+
+        strong{
+            margin-top: 5px;
+        }
+    }
+}
+
+@media (min-width: 768px){
+    .fb_count{
+        .col-md-1 {
+            flex: 0 0 10%;
+            max-width: 10%;
+        }
+    }
+}
